@@ -13,4 +13,14 @@ module.exports.renderMarketing = function(req, res){
 module.exports.renderSales= function(req, res){
     res.render('pages/sales');
 }
+module.exports.viewProfile = function (req,res){
+    res.render('pages/profile');
+}
+module.exports.renderDashboard = function (req,res){
+    if (!res.user.can(action)){
+        res.redirect('/');
+        return;
+    }
+    res.redirect('pages/dashboard');
+}
 

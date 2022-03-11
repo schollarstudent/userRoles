@@ -17,6 +17,16 @@ module.exports = (sequelize, DataTypes) => {
       })
     }
   };
+    can(action)
+    {
+    let match = this.role.permission.find(function(permission){
+        return permission.name === action
+      });
+
+      if(match) return true;
+      return false;
+    }
+  };
   User.init({
     email: DataTypes.STRING,
     password:DataTypes.STRING,
@@ -29,5 +39,3 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'roles_users',
     timestamps: false
   });
-  return User;
-};
